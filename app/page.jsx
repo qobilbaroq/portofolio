@@ -12,12 +12,12 @@ export default function Home() {
     <div className='flex flex-col justify-start items-center min-h-screen'>
     <Navbar/>
     <Main/>
-    <Pengenalan/>
+    {/* <Pengenalan/>
     <About/>
     <Skills/>
     <Projects/>
     <Experience/>
-    <Contact/>
+    <Contact/> */}
     </div>
   );
 }
