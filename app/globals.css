@@ -41,7 +41,7 @@
 
 @layer utilities {
   .auto-card{
-    @apply rounded-2xl mt-5 
+    @apply rounded-2xl
     w-[340px] 
     h-[525px]
     md:w-[700px] md:h-[400px]
