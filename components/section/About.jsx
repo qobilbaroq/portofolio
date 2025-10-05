@@ -3,7 +3,7 @@ import React from 'react'
 const About = () => {
   return (
     <div className="flex flex-col justify-between md:p-9 p-5 auto-card bg-foreground text-background">
-      <h1 className="text-3xl font-medium">Hi, Kenalan yuk</h1>
+      <h1 className="text-3xl font-medium">About</h1>
       <div className="flex flex-col md:flex-row justify-between gap-7">
         <div className="md:w-1/3 font-medium text-lg">Moch Nabil Al Mubaroq </div>
 
