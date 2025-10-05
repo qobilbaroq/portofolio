@@ -3,9 +3,9 @@
 import React, { useState, useRef, useEffect } from "react";
 
 export const Main = () => {
-  const [hoverIndex, setHoverIndex] = useState(null); // box yang cursor diam
-  const [trailBoxes, setTrailBoxes] = useState([]); // kotak yang dilewati
-  const [blinkingIndices, setBlinkingIndices] = useState([]); // array box yang lagi blink (ubah dari single ke array)
+  const [hoverIndex, setHoverIndex] = useState(null);
+  const [trailBoxes, setTrailBoxes] = useState([]);
+  const [blinkingIndices, setBlinkingIndices] = useState([]);
   const hoverTimeout = useRef(null);
 
   const items = Array.from({ length: 36 }, (_, i) => i);
@@ -37,7 +37,7 @@ export const Main = () => {
     if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
 
     hoverTimeout.current = setTimeout(() => {
-      setHoverIndex(i); // box dianggap diam
+      setHoverIndex(i);
     }, ); 
   };
 
@@ -73,7 +73,7 @@ export const Main = () => {
   }, []);
 
   return (
-    <div className="relative grid grid-cols-12 grid-rows-3 w-[1100px] h-[600px] py-5 px-3 mt-5 rounded-2xl bg-main overflow-auto">
+    <div className="relative grid grid-cols-12 grid-rows-3 auto-card py-5 px-3 bg-main">
       <h1 className="absolute inset-0 flex items-center justify-center text-6xl font-medium z-50 pointer-events-none select-none">
         PORTOFOLIO
       </h1>
