@@ -39,6 +39,17 @@
   }
 }
 
+@layer utilities {
+  .auto-card{
+    @apply rounded-2xl mt-5
+    w-full 
+    h-64
+    md:w-[700px] md:h-[400px]
+    lg:w-[900px] lg:h-[500px]
+    xl:w-[1100px] xl:h-[600px]
+  }
+}
+
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-out;
 }
