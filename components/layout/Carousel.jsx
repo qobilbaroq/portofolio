@@ -4,51 +4,63 @@ import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 
 const Carousel = ({ onImageClick }) => {
-  const slides = [
-    {
-      image: "/slider/image1.png",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      image: "/slider/image2.png",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      image: "/slider/image3.png",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      image: "/slider/image4.png",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      image: "/slider/image5.png",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-  ];
-
-  const [activeIndex, setActiveIndex] = useState(2);
+  const [slides, setSlides] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [autoplay, setAutoplay] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // autoplay
   useEffect(() => {
-    if (!autoplay) return;
-    const interval = setInterval(() => nextSlide(), 3000);
-    return () => clearInterval(interval);
-  }, [activeIndex, autoplay]);
+    const controller = new AbortController();
+    const signal = controller.signal;
 
+    const load = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const res = await fetch("/api/slides", { signal });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        if (Array.isArray(data)) {
+          setSlides(data);
+          setActiveIndex((prev) =>
+            data.length ? Math.min(prev, data.length - 1) : 0
+          );
+        } else {
+          console.warn("Unexpected slides payload", data);
+          setSlides([]);
+        }
+      } catch (err) {
+        if (err.name !== "AbortError") {
+          console.error("Error fetching slides:", err);
+          setError(err.message || "Failed to load slides");
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    load();
+
+    return () => controller.abort();
+  }, []);
+
+  // autoplay: only run when we have slides
   const nextSlide = useCallback(() => {
+    if (!slides.length) return;
     setActiveIndex((prev) => (prev + 1) % slides.length);
   }, [slides.length]);
 
   const prevSlide = useCallback(() => {
+    if (!slides.length) return;
     setActiveIndex((prev) => (prev - 1 + slides.length) % slides.length);
   }, [slides.length]);
+
+  useEffect(() => {
+    if (!autoplay || slides.length === 0) return;
+    const interval = setInterval(nextSlide, 3000);
+    return () => clearInterval(interval);
+  }, [nextSlide, autoplay, slides.length]);
 
   const handleMouseEnter = () => setAutoplay(false);
   const handleMouseLeave = () => setAutoplay(true);
@@ -144,12 +156,18 @@ const Carousel = ({ onImageClick }) => {
 
       {/* Description */}
       <div className="w-full max-w-[600px] text-center -mt-15 mb-5 transition-opacity duration-500 ease-in-out">
-        <p
-          key={activeIndex}
-          className="text-sm text-gray-600 font-light leading-relaxed"
-        >
-          {slides[activeIndex].description}
-        </p>
+        {slides.length > 0 ? (
+          <p
+            key={activeIndex}
+            className="text-sm text-gray-600 font-light leading-relaxed"
+          >
+            {slides[activeIndex]?.description ?? ""}
+          </p>
+        ) : (
+          <p className="text-sm text-gray-600 font-light leading-relaxed">
+            No slides available
+          </p>
+        )}
       </div>
     </div>
   );
