@@ -1,4 +1,4 @@
-import {  Work_Sans} from "next/font/google";
+import { Work_Sans } from "next/font/google";
 import "./globals.css";
 
 const workSans = Work_Sans({
@@ -13,9 +13,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${workSans.variable}  antialiased`}
-      >
-        {children}
+      <body className={`${workSans.variable}  antialiased`}>
+        <div className="app-container">{children}</div>
       </body>
     </html>
   );

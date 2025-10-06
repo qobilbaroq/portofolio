@@ -2,7 +2,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav className="flex justify-between items-center w-full px-4 md:px-8 py-6 z-50">
+    <nav className="fixed top-0 left-0 right-0 h-[var(--navbar-height)] flex justify-between items-center w-full px-4 md:px-8 z-50 backdrop-blur-sm">
       <h1 className="hidden md:block text-foreground text-sm hover:text-text-muted-light cursor-pointer">
         BAROQ
       </h1>
