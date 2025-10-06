@@ -87,3 +87,10 @@ body::-webkit-scrollbar,
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
+.perspective {
+  perspective: 600px;
+  height: 500px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}

@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
+import Carousel from "../layout/Carousel";
+// import projectImg from "@/public/assets/projects.png";
 
 const Projects = () => {
   return (
-    <div className='auto-card bg-foreground'>Projects</div>
-  )
-}
+    <div className="auto-card bg-foreground text-background md:p-9 p-5">
+      <h1 className="text-3xl font-medium">Project</h1>
+      <div className="flex justify-center">
+        <Carousel
+          // onImageClick={(index) => console.log("Clicked image:", index + 1)}
+        />
+      </div>
+    </div>
+  );
+};
 
-export default Projects
+export default Projects;
