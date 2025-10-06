@@ -8,7 +8,6 @@ const Projects = () => {
       <h1 className="text-3xl font-medium">Project</h1>
       <div className="flex justify-center">
         <Carousel
-          // onImageClick={(index) => console.log("Clicked image:", index + 1)}
         />
       </div>
     </div>
