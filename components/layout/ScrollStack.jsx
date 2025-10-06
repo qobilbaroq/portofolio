@@ -14,7 +14,7 @@ function Card({ children, index, range, targetScale, progress, innerRef }) {
       <motion.div
         style={{
           scale,
-          top: `calc(-5vh + ${index * 16}px)`,
+          top: `calc(-4vh + ${index * 12}px)`,
         }}
         transition={{
           type: "spring",
@@ -44,7 +44,16 @@ export const ScrollStack = ({ children }) => {
   const [offsets, setOffsets] = useState([]);
 
   useEffect(() => {
-    setOffsets(childrenArray.map(() => Math.random() * 8 - 4));
+    const isDesktop = typeof window !== "undefined" && window.innerWidth >= 768;
+    const maxOffset = isDesktop ? 16 : 8; 
+    const minOffset = Math.max(4, Math.floor(maxOffset / 2)); 
+
+    const offs = childrenArray.map((_, i) => {
+      const mag =
+        Math.floor(Math.random() * (maxOffset - minOffset + 1)) + minOffset;
+      return i % 2 === 0 ? -mag : mag;
+    });
+    setOffsets(offs);
   }, [childrenArray]);
 
   useEffect(() => {
@@ -61,11 +70,14 @@ export const ScrollStack = ({ children }) => {
 
     const containerRect = containerEl.getBoundingClientRect();
     const containerTop = window.scrollY + containerRect.top;
-    const negativeFiveVh = -0.05 * window.innerHeight; 
-    const indexPx = index * 16; 
+    const negativeFiveVh = -0.09 * window.innerHeight;
+    const indexPx = index * 16;
     const innerTopOffset = negativeFiveVh + indexPx;
 
-    const targetY = Math.max(0, Math.floor(containerTop + index * window.innerHeight + innerTopOffset));
+    const targetY = Math.max(
+      0,
+      Math.floor(containerTop + index * window.innerHeight + innerTopOffset)
+    );
     window.scrollTo({ top: targetY, behavior: "smooth" });
   };
 
