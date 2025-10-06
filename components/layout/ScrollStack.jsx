@@ -11,7 +11,7 @@ function Card({ children, index, range, targetScale, progress }) {
       <motion.div
         style={{
           scale,
-          top: `calc(-5vh + ${index * 18}px)`,
+          top: `calc(-5vh + ${index * 16}px)`,
         }}
         transition={{
           type: "spring",
