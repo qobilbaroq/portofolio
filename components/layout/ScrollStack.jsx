@@ -11,19 +11,17 @@ function Card({ children, index, range, targetScale, progress }) {
       <motion.div
         style={{
           scale,
-          top: `calc(-5vh + ${index * 25}px)`,
+          top: `calc(-5vh + ${index * 18}px)`,
         }}
         transition={{
           type: "spring",
-          stiffness: 300,
-          damping: 30,
-          mass: 0.8,
+          stiffness: 260,
+          damping: 35,
+          mass: 1,
         }}
-        className="relative origin-top shadow-2xl rounded-3xl overflow-visible"
+        className="relative origin-top shadow-2xl rounded-3xl overflow-visible top-0 bottom-0"
       >
-        <div className="auto-card bg-foreground text-background flex flex-col justify-between">
           {children}
-        </div>
       </motion.div>
     </div>
   );

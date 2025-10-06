@@ -5,7 +5,8 @@
   --foreground: #fafafa;
   --color-main: #d92101;
   --color-navbar: #2c2c2c;
-  --color-text-muted-light: #B3B3B3;
+  --navbar-height: 72px;
+  --color-text-muted-light: #b3b3b3;
   --color-text-muted-dark: #222222;
 }
 
@@ -40,13 +41,13 @@
 }
 
 @layer utilities {
-  .auto-card{
+  .auto-card {
     @apply rounded-2xl
     w-[340px] 
     h-[525px]
     md:w-[700px] md:h-[400px]
     lg:w-[900px] lg:h-[500px]
-    xl:w-[1100px] xl:h-[600px]
+    xl:w-[1100px] xl:h-[600px];
   }
 }
 
@@ -54,9 +55,19 @@
   animation: fadeIn 0.3s ease-out;
 }
 
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-work-sans), sans-serif;
+  /* push content below fixed navbar */
+  padding-top: var(--navbar-height);
+}
+
+/* Centering container for main content */
+.app-container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }

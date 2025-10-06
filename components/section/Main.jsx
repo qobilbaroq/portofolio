@@ -60,7 +60,7 @@ export const Main = () => {
 
   return (
     <div className="relative grid grid-cols-3 md:grid-cols-12 grid-rows-3 auto-card py-5 px-3 bg-main">
-      <h1 className="absolute inset-0 flex items-center justify-center text-4xl md:text-6xl font-medium z-50 pointer-events-none text-foreground select-none">
+      <h1 className="absolute inset-0 flex items-center justify-center text-4xl md:text-6xl font-medium z-50 pointer-events-none select-none">
         PORTOFOLIO
       </h1>
 
