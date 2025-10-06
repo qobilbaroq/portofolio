@@ -146,7 +146,7 @@ const Carousel = ({ onImageClick }) => {
       <div className="w-full max-w-[600px] text-center -mt-15 mb-5 transition-opacity duration-500 ease-in-out">
         <p
           key={activeIndex}
-          className="text-sm text-gray-600 font-light leading-relaxed font-['Spectral_SC']"
+          className="text-sm text-gray-600 font-light leading-relaxed"
         >
           {slides[activeIndex].description}
         </p>
