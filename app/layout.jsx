@@ -1,20 +1,16 @@
-import { Work_Sans } from "next/font/google";
 import "./globals.css";
 
-const workSans = Work_Sans({
-  subsets: ["latin"],
-  variable: "--font-work-sans",
-});
-
 export const metadata = {
-  title: "Baroq | portofolio",
+  title: "Baroq | Portfolio",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${workSans.variable}  antialiased`}>
-        <div className="app-container">{children}</div>
+      <body
+        className={` antialiased min-h-screen flex flex-col`}
+      >
+        {children}
       </body>
     </html>
   );

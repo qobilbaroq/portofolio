@@ -1,22 +1,63 @@
-import React from "react";
+"use client";
 
-const Navbar = () => {
+import React, { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Hamburger } from "../ui/Hamburger";
+import Menu from "../ui/Menu";
+
+export const Navbar = () => {
+  const [active, setActive] = useState(false);
+
+  const menuVariants = {
+    closed: { opacity: 0, scale: 0.98, y: -8 },
+    open: { opacity: 1, scale: 1, y: 0 },
+  };
+
+  const menuTransition = {
+    duration: 0.5,
+    ease: "easeInOut",
+  };
+
+  const toggle = () => setActive((v) => !v);
+  const close = () => setActive(false);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 h-[var(--navbar-height)] flex justify-between items-center w-full px-4 md:px-8 z-50 backdrop-blur-sm">
-      <h1 className="hidden md:block text-foreground text-sm hover:text-text-muted-light cursor-pointer">
+    <div className="relative w-full px-7 h-20 flex items-center justify-between">
+      <h1 className="text-sm hover:text-muted-primary transform duration-300 ease-in-out cursor-pointer">
         BAROQ
       </h1>
 
-      <div className="flex justify-between items-center bg-navbar md:py-3 py-4 px-6 rounded-lg cursor-pointer w-full md:w-[400px]">
-        <h1 className="text-foreground text-sm">MENU</h1>
-        <div className="text-foreground text-sm">icon</div>
+      <div className="relative flex items-center justify-between bg-main-secondary px-4 h-12 w-md rounded-lg">
+        <h1 
+        role="button"
+        aria-expanded={active}
+        onClick={toggle}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === "") toggle();
+        }}
+        className="text-sm font-semibold cursor-pointer">MENU</h1>
+        <Hamburger active={active} onToggle={() => setActive((v) => !v)} />
+
+        <AnimatePresence>
+          {active && (
+            <motion.div
+              key="menu"
+              initial="closed"
+              animate="open"
+              exit="closed"
+              variants={menuVariants}
+              transition={menuTransition}
+              className="absolute left-1/2 top-full mt-3 transform -translate-x-1/2 z-50"
+            >
+              <Menu />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
-      <h1 className="hidden md:block text-foreground text-sm hover:text-text-muted-light cursor-pointer">
+      <h1 className="text-sm hover:text-muted-primary transform duration-300 ease-in-out cursor-pointer">
         CONTACT
       </h1>
-    </nav>
+    </div>
   );
 };
-
-export default Navbar;

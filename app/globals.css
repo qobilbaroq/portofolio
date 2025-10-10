@@ -1,43 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --background: #161616;
-  --foreground: #fafafa;
-  --color-main: #d92101;
-  --color-navbar: #2c2c2c;
-  --navbar-height: 72px;
-  --color-text-muted-light: #b3b3b3;
-  --color-text-muted-dark: #222222;
+  --primary: #161616;
+  --secondary: #fafafa;
+  --main-primary: #d92101;
+  --main-secondary: #2c2c2c;
+  --muted-primary: #b3b3b3;
+  --muted-secondary: #222222;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-main: var(--color-main);
-  --color-navbar: var(--color-navbar);
-  --color-text-muted-light: var(--color-text-muted-light);
-  --color-text-muted-dark: var(--color-text-muted-dark);
-
-  --font-sans: var(--font-work-sans);
-  --font-heading: var(--font-caveat);
-}
-
-@media (prefers-color-scheme: white) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-main-primary: var(--main-primary);
+  --color-main-secondary: var(--main-secondary);
+  --color-muted-primary: var(--muted-primary);
+  --color-muted-secondary: var(--muted-secondary);
 }
 
 @layer utilities {
@@ -51,46 +31,8 @@
   }
 }
 
-.animate-fadeIn {
-  animation: fadeIn 0.3s ease-out;
-}
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-work-sans), sans-serif;
-  /* push content below fixed navbar */
-  padding-top: var(--navbar-height);
-}
-
-/* Hide scrollbars site-wide but keep scrolling functionality */
-html,
-body,
-.app-container {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */
-}
-
-/* WebKit-based browsers */
-html::-webkit-scrollbar,
-body::-webkit-scrollbar,
-.app-container::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-}
-
-/* Centering container for main content */
-.app-container {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.perspective {
-  perspective: 600px;
-  height: 500px;
-  overflow: hidden;
-  transform-style: preserve-3d;
+  background: var(--primary);
+  color: var(--secondary);
 }
