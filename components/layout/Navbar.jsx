@@ -19,10 +19,10 @@ export const Navbar = () => {
   };
 
   const toggle = () => setActive((v) => !v);
-  const close = () => setActive(false);
+  const closed = () => setActive(false);
 
   return (
-    <div className="relative w-full px-7 h-20 flex items-center justify-between">
+    <div className="fixed w-full px-7 h-20 flex items-center justify-between z-50">
       <h1 className="text-sm hover:text-muted-primary transform duration-300 ease-in-out cursor-pointer">
         BAROQ
       </h1>

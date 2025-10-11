@@ -2,7 +2,7 @@ import React from "react";
 
 const Menu = () => {
   return (
-    <div className="w-md h-[35rem] backdrop-blur-md bg-white/20 p-7 rounded-lg">
+    <div className="w-md h-[35rem] backdrop-blur-md bg-muted-secondary/50 p-7 rounded-lg">
       <div className="text-secondary flex flex-col justify-between h-full">
         {/* Bagian Projects */}
         <div>
@@ -29,9 +29,7 @@ const Menu = () => {
 
         {/* Bagian Sosial */}
         <div>
-          <h1 className="text-muted-primary uppercase text-sm mb-2">
-            Sosial
-          </h1>
+          <h1 className="font-medium text-muted-primary uppercase text-sm mb-2">Sosial</h1>
           <ul className="space-y-1 cursor-pointer capitalize">
             <li className="text-secondary text-lg transition duration-200 ease-in-out hover:text-muted-primary">
               Instagram

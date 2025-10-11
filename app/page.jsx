@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/layout/Navbar";
 import Experience from "@/components/section/Experience";
+import { Main } from "@/components/section/Main";
 import { ScrollStack } from "@/components/ui/ScrollStack";
 
 export default function Home() {
@@ -7,12 +8,7 @@ export default function Home() {
     <>
       <Navbar/>
       <ScrollStack>
-        <Experience/>
-        <Experience/>
-        <Experience/>
-        <Experience/>
-        <Experience/>
-        <Experience/>
+        <Main/>
         <Experience/>
       </ScrollStack>
     </>

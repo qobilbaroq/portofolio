@@ -1,10 +1,12 @@
 @import "tailwindcss";
+@import 'lenis/dist/lenis.css';
 
 :root {
   --primary: #161616;
   --secondary: #fafafa;
   --main-primary: #d92101;
   --main-secondary: #2c2c2c;
+  --muted-main: #e04d33;
   --muted-primary: #b3b3b3;
   --muted-secondary: #222222;
 }
@@ -18,11 +20,12 @@
   --color-main-secondary: var(--main-secondary);
   --color-muted-primary: var(--muted-primary);
   --color-muted-secondary: var(--muted-secondary);
+  --color-muted-main: var(--muted-main);
 }
 
 @layer utilities {
   .auto-card {
-    @apply rounded-2xl
+    @apply rounded-2xl mt-8
     w-[340px] 
     h-[525px]
     md:w-[700px] md:h-[400px]
@@ -35,4 +38,5 @@
 body {
   background: var(--primary);
   color: var(--secondary);
+  overflow-y: hidden;
 }
