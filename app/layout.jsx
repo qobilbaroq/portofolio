@@ -1,4 +1,5 @@
 import "./globals.css";
+import "lenis/dist/lenis.css";
 
 export const metadata = {
   title: "Baroq | Portfolio",

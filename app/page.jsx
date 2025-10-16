@@ -10,6 +10,10 @@ export default function Home() {
       <ScrollStack>
         <Main/>
         <Experience/>
+        <Experience/>
+        <Experience/>
+        <Experience/>
+        <Experience/>
       </ScrollStack>
     </>
   );

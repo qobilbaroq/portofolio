@@ -1,12 +1,11 @@
 @import "tailwindcss";
-@import 'lenis/dist/lenis.css';
 
 :root {
   --primary: #161616;
   --secondary: #fafafa;
   --main-primary: #d92101;
   --main-secondary: #2c2c2c;
-  --muted-main: #e04d33;
+  --muted-main: #e35f47;
   --muted-primary: #b3b3b3;
   --muted-secondary: #222222;
 }

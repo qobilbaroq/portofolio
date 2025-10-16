@@ -27,7 +27,7 @@ export const Main = () => {
     timeoutRefs.current[i] = setTimeout(() => {
       setActiveBoxes((prev) => prev.filter((idx) => idx !== i));
       delete timeoutRefs.current[i];
-    }, 300);
+    }, 400);
   };
 
   return (
@@ -46,10 +46,10 @@ export const Main = () => {
               animate={{
                 backgroundColor: isActive
                   ? "var(--color-muted-main)"
-                  : "transparent",
+                  : "rgba(224, 77, 51, 0)",
               }}
               transition={{
-                duration: isHovered ? 0.15 : 1.0,
+                duration: isHovered ? 0.4 : 0.8,
                 ease: "easeInOut",
               }}
               className="rounded-lg border"
