@@ -39,10 +39,23 @@ export const ScrollStack = ({ children }) => {
       const sectionSize = containerHeight / (childArray.length - 1);
       const targetScroll = containerTop + sectionSize * index;
 
-      lenisRef.current.scrollTo(targetScroll, {
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      });
+      const currentIndex = Math.round(
+        (lenisRef.current.scroll || 0 - containerTop) / sectionSize
+      );
+
+      const distance = Math.abs(index - currentIndex);
+
+      if (distance <= 1) {
+        lenisRef.current.scrollTo(targetScroll, {
+          duration: 0.6,
+          easing: (t) => 1 - Math.pow(1 - t, 2),
+        });
+      } else {
+        lenisRef.current.scrollTo(targetScroll, {
+          duration: 1.8,
+          easing: (t) => Math.pow(t, 3),
+        });
+      }
     }
   };
 

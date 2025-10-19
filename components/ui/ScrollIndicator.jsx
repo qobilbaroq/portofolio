@@ -16,11 +16,11 @@ export const ScrollIndicator = ({
   });
 
   return (
-    <div className="fixed right-20 top-1/2 -translate-y-1/2 flex flex-col gap-2 items-center z-50">
+    <div className="fixed right-20 top-1/2 -translate-y-1/2 flex flex-col items-center z-50">
       {items.map((_, i) => (
         <div
           key={i}
-          className="relative w-10 h-2 flex justify-center items-center cursor-pointer group"
+          className="relative w-10 h-2 flex justify-center items-center cursor-pointer group my-0.5 hover:my-2 transition-all duration-100"
           onClick={() => onIndicatorClick(i)}
         >
           <div
@@ -28,7 +28,7 @@ export const ScrollIndicator = ({
             ${
               activeIndex === i
                 ? "w-10 bg-white scale-100"
-                : "w-6 bg-gray-500 group-hover:w-7 group-hover:bg-gray-300 group-hover:scale-110"
+                : "w-6 bg-gray-500 group-hover:w-8 group-hover:bg-gray-300 group-hover:scale-110"
             }
           `}
           />
