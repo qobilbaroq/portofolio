@@ -21,6 +21,13 @@ export const Navbar = () => {
   const toggle = () => setActive((v) => !v);
   const closed = () => setActive(false);
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <div className="fixed w-full px-7 h-20 flex items-center justify-between z-50">
       <h1 className="text-sm hover:text-muted-primary transform duration-300 ease-in-out cursor-pointer">
@@ -28,14 +35,17 @@ export const Navbar = () => {
       </h1>
 
       <div className="relative flex items-center justify-between bg-main-secondary px-4 h-12 w-md rounded-lg">
-        <h1 
-        role="button"
-        aria-expanded={active}
-        onClick={toggle}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === "") toggle();
-        }}
-        className="text-sm font-semibold cursor-pointer">MENU</h1>
+        <h1
+          role="button"
+          aria-expanded={active}
+          onClick={toggle}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === "") toggle();
+          }}
+          className="text-sm font-semibold cursor-pointer"
+        >
+          MENU
+        </h1>
         <Hamburger active={active} onToggle={() => setActive((v) => !v)} />
 
         <AnimatePresence>
@@ -55,7 +65,10 @@ export const Navbar = () => {
         </AnimatePresence>
       </div>
 
-      <h1 className="text-sm hover:text-muted-primary transform duration-300 ease-in-out cursor-pointer">
+      <h1
+        onClick={scrollToContact}
+        className="text-sm hover:text-muted-primary transform duration-300 ease-in-out cursor-pointer"
+      >
         CONTACT
       </h1>
     </div>

@@ -1,6 +1,13 @@
 import React from "react";
 
 const Menu = () => {
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <div className="w-md h-[35rem] backdrop-blur-md bg-muted-secondary/50 p-7 rounded-lg">
       <div className="text-secondary flex flex-col justify-between h-full">
@@ -29,7 +36,9 @@ const Menu = () => {
 
         {/* Bagian Sosial */}
         <div>
-          <h1 className="font-medium text-muted-primary uppercase text-sm mb-2">Sosial</h1>
+          <h1 className="font-medium text-muted-primary uppercase text-sm mb-2">
+            Sosial
+          </h1>
           <ul className="space-y-1 cursor-pointer capitalize">
             <li className="text-secondary text-lg transition duration-200 ease-in-out hover:text-muted-primary">
               Instagram
@@ -44,7 +53,10 @@ const Menu = () => {
         </div>
 
         {/* Tombol Contact */}
-        <button className="border border-secondary rounded-lg w-full py-3 text-sm hover:bg-secondary hover:text-primary transition duration-400 ease-in-out">
+        <button
+          onClick={scrollToContact}
+          className="border border-secondary rounded-lg w-full py-3 text-sm hover:bg-secondary hover:text-primary transition duration-400 ease-in-out"
+        >
           CONTACT
         </button>
       </div>

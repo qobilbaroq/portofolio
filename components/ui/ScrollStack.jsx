@@ -66,7 +66,7 @@ export const ScrollStack = ({ children }) => {
         scrollYProgress={scrollYProgress}
         onIndicatorClick={scrollToCard}
       />
-      <main ref={container} className="flex-1">
+      <main ref={container} className="flex-1 ">
         {childArray.map((child, i) => (
           <Card
             key={i}
