@@ -20,7 +20,7 @@ const colorMap = {
 };
 
 export default function Book3D({
-  size = "md",
+  size = "sm",
   color = "blue",
   title = "Title",
   showLabel = false,
