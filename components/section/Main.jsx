@@ -75,7 +75,7 @@ export const Main = () => {
 
   return (
     <div className="relative auto-card p-5 bg-main-primary flex items-center justify-center">
-      <h1 className="text-6xl font-semibold z-30">PORTOFOLIO</h1>
+      <h1 className="text-6xl font-semibold z-30" style={{ fontFamily: "var(--font-syne)" }}>PORTOFOLIO</h1>
       <div className="grid grid-cols-12 grid-rows-3 h-full px-3 py-5 absolute inset-0">
         {Array.from({ length: 36 }).map((_, i) => {
           const isActive = activeBoxes.includes(i);
